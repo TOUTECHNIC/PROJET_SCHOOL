@@ -1,3 +1,7 @@
+'''
+how to automate you pc setting 
+'''
+
 import subprocess
 import time
 
