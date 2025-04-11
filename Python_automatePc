@@ -1,0 +1,31 @@
+import subprocess
+import time
+
+# Nom de l'appareil à vérifier
+device_name = "NomDeVotreAppareil"  # Remplacez par le nom de votre appareil
+
+def check_usb_device(device_name):
+    # Exécute la commande pour lister les appareils USB
+    result = subprocess.run(['lsusb'], capture_output=True, text=True)
+    # Vérifie si le nom de l'appareil est dans la sortie
+    return device_name in result.stdout
+
+def provide_wifi_connection():
+    # Remplacez ces valeurs par celles de votre réseau Wi-Fi
+    ssid = "VotreSSID"
+    password = "VotreMotDePasse"
+
+    # Commande pour se connecter au Wi-Fi
+    command = f'nmcli dev wifi connect "{ssid}" password "{password}"'
+    subprocess.run(command, shell=True)
+
+if name == "main":
+    while True:
+        if check_usb_device(device_name):
+            print(f"{device_name} est connecté via USB.")
+            provide_wifi_connection()
+            print("Connexion Wi-Fi fournie.")
+            break
+        else:
+            print(f"{device_name} n'est pas connecté. Vérification dans 5 secondes...")
+            time.sleep(5) j'ai un script mais en fait il agira sur mon pc donc j'aimerai savoir si vous savez faire en sorte que celui ci agit sur mon tel pour que lui se mette en wifi
